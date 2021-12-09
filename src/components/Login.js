@@ -11,11 +11,19 @@ const Login = () => {
 
   const connectWallet = async () => {
     const getAccounts = async () => {
+      const getProvider = async () => {
+        const provider = await new ethers.providers.Web3Provider(
+          window.ethereum
+        );
+        setProvider(provider);
+        console.log(provider);
+      };
       const accounts = await window.ethereum.request({
         method: 'eth_requestAccounts',
       });
       setDefaultAccount(accounts[0]);
       setConnButtonText('Wallet connected');
+      getProvider();
     };
 
     if (window.ethereum) {
