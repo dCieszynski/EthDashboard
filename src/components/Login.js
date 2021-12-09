@@ -7,30 +7,28 @@ const Login = () => {
   const [defaultAccount, setDefaultAccount] = useState();
   const [connButtonText, setConnButtonText] = useState('Connect Wallet');
 
-  const [provider, setProvider] = useState({});
-  const [signer, setSigner] = useState();
+  const [provider, setProvider] = useState();
 
-  const connectWallet = () => {
-    if (window.ethereum) {
-      window.ethereum
-        .request({ method: 'eth_requestAccounts' })
-        .then((result) => {
-          accountChangedHandler(result[0]);
-          setConnButtonText('Wallet connected');
-        });
-    } else {
-      setErrorMessage('Need to install MetaMask');
-    }
-
-    const accountChangedHandler = (newAccount) => {
-      setDefaultAccount(newAccount);
+  const connectWallet = async () => {
+    const getAccounts = async () => {
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      setDefaultAccount(accounts[0]);
+      setConnButtonText('Wallet connected');
     };
+
+    if (window.ethereum) {
+      getAccounts();
+    } else {
+      setErrorMessage('Need to install MetaMask!');
+    }
   };
+
   return (
     <div>
       <button onClick={connectWallet}>{connButtonText}</button>
-      <Dashboard accout={defaultAccount} />
-      <div>{defaultAccount}</div>
+      <Dashboard account={defaultAccount} />
       {errorMessage}
     </div>
   );
