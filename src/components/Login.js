@@ -8,6 +8,19 @@ const Login = () => {
   const [connButtonText, setConnButtonText] = useState('Connect Wallet');
 
   const [provider, setProvider] = useState();
+  const [balance, setBalance] = useState();
+
+  useEffect(() => {
+    getAccountBalance();
+  }, [provider]);
+
+  const getAccountBalance = async () => {
+    if (provider !== undefined) {
+      const balance = await provider.getBalance(defaultAccount);
+      const formatBalance = await ethers.utils.formatEther(balance);
+      setBalance(formatBalance);
+    }
+  };
 
   const connectWallet = async () => {
     const getAccounts = async () => {
@@ -16,7 +29,6 @@ const Login = () => {
           window.ethereum
         );
         setProvider(provider);
-        console.log(provider);
       };
       const accounts = await window.ethereum.request({
         method: 'eth_requestAccounts',
@@ -36,7 +48,7 @@ const Login = () => {
   return (
     <div>
       <button onClick={connectWallet}>{connButtonText}</button>
-      <Dashboard account={defaultAccount} />
+      <Dashboard account={defaultAccount} balance={balance} />
       {errorMessage}
     </div>
   );
