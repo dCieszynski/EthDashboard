@@ -28,12 +28,9 @@ const Login = () => {
     if (defaultAccount !== undefined) {
       let network = 'ropsten';
       let etherscanProvider = new ethers.providers.EtherscanProvider(network);
-      let history = await etherscanProvider
-        .getHistory(defaultAccount)
-        .then((history) => {
-          setTransactionsHistory(history);
-          console.log(transactionsHistory);
-        });
+      await etherscanProvider.getHistory(defaultAccount).then((history) => {
+        setTransactionsHistory(history);
+      });
     }
   };
 
