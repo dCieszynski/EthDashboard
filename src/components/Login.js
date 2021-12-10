@@ -11,11 +11,13 @@ const Login = () => {
   const [balance, setBalance] = useState();
   const [transactionsHistory, setTransactionsHistory] = useState([]);
 
+  //Get data when provider change
   useEffect(() => {
     getAccountBalance();
     getAccountTransfers();
   }, [provider]);
 
+  //Get ballance of provider address
   const getAccountBalance = async () => {
     if (provider !== undefined) {
       const balance = await provider.getBalance(defaultAccount);
@@ -24,6 +26,7 @@ const Login = () => {
     }
   };
 
+  //Get history of address transactions
   const getAccountTransfers = async () => {
     if (defaultAccount !== undefined) {
       let network = 'ropsten';
@@ -34,22 +37,28 @@ const Login = () => {
     }
   };
 
+  //Connecting MetaMask
   const connectWallet = async () => {
+    //Get list of provider accounts
     const getAccounts = async () => {
+      //Getting and setting new provider
       const getProvider = async () => {
         const provider = await new ethers.providers.Web3Provider(
           window.ethereum
         );
         setProvider(provider);
       };
+      //Getting list of provider's accounts
       const accounts = await window.ethereum.request({
         method: 'eth_requestAccounts',
       });
+      //Setting provider and default account
       setDefaultAccount(accounts[0]);
       setConnButtonText('Wallet connected');
       getProvider();
     };
 
+    //Checking if MetaMask is installed, if it is connect accounts, if not display error
     if (window.ethereum) {
       getAccounts();
     } else {
