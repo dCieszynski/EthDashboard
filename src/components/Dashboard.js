@@ -6,6 +6,18 @@ const Dashboard = (props) => {
     <div>
       <div>User account: {props.account}</div>
       <div>Balance: {props.balance}</div>
+      <div>
+        <div>Transactions hitsory</div>
+        <div>
+          {props.transactionsHistory.map((transaction, i) => {
+            return (
+              <div key={i}>
+                From:{transaction.from} -- To: {transaction.to}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

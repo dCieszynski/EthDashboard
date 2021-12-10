@@ -9,9 +9,11 @@ const Login = () => {
 
   const [provider, setProvider] = useState();
   const [balance, setBalance] = useState();
+  const [transactionsHistory, setTransactionsHistory] = useState([]);
 
   useEffect(() => {
     getAccountBalance();
+    getAccountTransfers();
   }, [provider]);
 
   const getAccountBalance = async () => {
@@ -19,6 +21,19 @@ const Login = () => {
       const balance = await provider.getBalance(defaultAccount);
       const formatBalance = await ethers.utils.formatEther(balance);
       setBalance(formatBalance);
+    }
+  };
+
+  const getAccountTransfers = async () => {
+    if (defaultAccount !== undefined) {
+      let network = 'ropsten';
+      let etherscanProvider = new ethers.providers.EtherscanProvider(network);
+      let history = await etherscanProvider
+        .getHistory(defaultAccount)
+        .then((history) => {
+          setTransactionsHistory(history);
+          console.log(transactionsHistory);
+        });
     }
   };
 
@@ -48,7 +63,11 @@ const Login = () => {
   return (
     <div>
       <button onClick={connectWallet}>{connButtonText}</button>
-      <Dashboard account={defaultAccount} balance={balance} />
+      <Dashboard
+        account={defaultAccount}
+        balance={balance}
+        transactionsHistory={transactionsHistory}
+      />
       {errorMessage}
     </div>
   );
