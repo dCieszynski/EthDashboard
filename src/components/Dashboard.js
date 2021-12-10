@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
 import React from 'react';
+import TransactionsHistory from './TransactionsHistory';
 
 const Dashboard = (props) => {
   return (
@@ -8,15 +9,7 @@ const Dashboard = (props) => {
       <div>Balance: {props.balance}</div>
       <div>
         <div>Transactions hitsory</div>
-        <div>
-          {props.transactionsHistory.map((transaction, i) => {
-            return (
-              <div key={i}>
-                From:{transaction.from} -- To: {transaction.to}
-              </div>
-            );
-          })}
-        </div>
+        <TransactionsHistory transactionsHistory={props.transactionsHistory} />
       </div>
     </div>
   );
