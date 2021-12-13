@@ -3,6 +3,7 @@ import React from 'react';
 const TransactionsHistory = (props) => {
   return (
     <div>
+      <div>Transactions History</div>
       {props.transactionsHistory.map((transaction, i) => {
         return (
           <div key={i}>

@@ -22,7 +22,7 @@ const Login = () => {
     if (provider !== undefined) {
       const balance = await provider.getBalance(defaultAccount);
       const formatBalance = await ethers.utils.formatEther(balance);
-      setBalance(formatBalance);
+      setBalance(parseFloat(formatBalance).toFixed(4));
     }
   };
 
@@ -67,8 +67,10 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <button onClick={connectWallet}>{connButtonText}</button>
+    <div className='container container--login'>
+      <button className='btn btn--login' onClick={connectWallet}>
+        {connButtonText}
+      </button>
       <Dashboard
         account={defaultAccount}
         balance={balance}
