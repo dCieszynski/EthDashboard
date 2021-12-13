@@ -47,8 +47,43 @@ body {
 .dashboard {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
 }
 
 .header.header--dashboard {
   font-size: 2.6rem;
+}
+
+.transactionsHistory {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header.header-transactionsHistory {
+  font-size: 2.8rem;
+}
+
+.table {
+  width: 100%;
+}
+
+.table-headers {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2.4rem;
+}
+
+.table-row {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.table-col {
+  text-align: center;
 }
