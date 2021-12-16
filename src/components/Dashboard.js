@@ -1,4 +1,3 @@
-import { ethers } from 'ethers';
 import React from 'react';
 import TransactionsHistory from './TransactionsHistory';
 import UserInfo from './UserInfo';

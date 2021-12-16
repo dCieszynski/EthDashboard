@@ -33,6 +33,7 @@ const Login = () => {
       let etherscanProvider = new ethers.providers.EtherscanProvider(network);
       await etherscanProvider.getHistory(defaultAccount).then((history) => {
         setTransactionsHistory(history);
+        console.log(history);
       });
     }
   };

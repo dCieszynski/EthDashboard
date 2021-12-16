@@ -72,7 +72,7 @@ body {
   width: 100%;
 }
 
-.table-headers {
+.table-content {
   display: flex;
   justify-content: space-around;
   font-size: 2.4rem;
@@ -80,10 +80,4 @@ body {
 
 .table-row {
   font-size: 2rem;
-  display: flex;
-  justify-content: space-around;
-}
-
-.table-col {
-  text-align: center;
 }
