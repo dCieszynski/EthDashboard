@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/EthDashboard/static/css/main.66f6ef36.chunk.css",
+    "main.js": "/EthDashboard/static/js/main.579b96e8.chunk.js",
+    "main.js.map": "/EthDashboard/static/js/main.579b96e8.chunk.js.map",
+    "runtime-main.js": "/EthDashboard/static/js/runtime-main.76b1b822.js",
+    "runtime-main.js.map": "/EthDashboard/static/js/runtime-main.76b1b822.js.map",
+    "static/js/2.3adc8eb9.chunk.js": "/EthDashboard/static/js/2.3adc8eb9.chunk.js",
+    "static/js/2.3adc8eb9.chunk.js.map": "/EthDashboard/static/js/2.3adc8eb9.chunk.js.map",
+    "index.html": "/EthDashboard/index.html",
+    "static/css/main.66f6ef36.chunk.css.map": "/EthDashboard/static/css/main.66f6ef36.chunk.css.map",
+    "static/js/2.3adc8eb9.chunk.js.LICENSE.txt": "/EthDashboard/static/js/2.3adc8eb9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.76b1b822.js",
+    "static/js/2.3adc8eb9.chunk.js",
+    "static/css/main.66f6ef36.chunk.css",
+    "static/js/main.579b96e8.chunk.js"
+  ]
+}
