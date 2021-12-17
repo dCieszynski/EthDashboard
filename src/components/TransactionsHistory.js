@@ -33,8 +33,17 @@ const TransactionsHistory = (props) => {
             <h3 className='header header--table'>From address</h3>
             {props.transactionsHistory.map((tx, i) => {
               return (
-                <div className='table-row' key={i}>
-                  {tx.from}
+                <div
+                  className={
+                    'table-row' +
+                    ' ' +
+                    (props.account === String(tx.from).toLowerCase()
+                      ? 'account-address'
+                      : '')
+                  }
+                  key={i}
+                >
+                  {String(tx.from).toLowerCase()}
                 </div>
               );
             })}
@@ -43,8 +52,17 @@ const TransactionsHistory = (props) => {
             <h3 className='header header--table'>To address</h3>
             {props.transactionsHistory.map((tx, i) => {
               return (
-                <div className='table-row' key={i}>
-                  {tx.to}
+                <div
+                  className={
+                    'table-row' +
+                    ' ' +
+                    (props.account === String(tx.to).toLowerCase()
+                      ? 'account-address'
+                      : '')
+                  }
+                  key={i}
+                >
+                  {String(tx.to).toLowerCase()}
                 </div>
               );
             })}

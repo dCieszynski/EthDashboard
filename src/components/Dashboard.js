@@ -6,7 +6,10 @@ const Dashboard = (props) => {
   return (
     <div className='dashboard'>
       <UserInfo account={props.account} balance={props.balance} />
-      <TransactionsHistory transactionsHistory={props.transactionsHistory} />
+      <TransactionsHistory
+        account={props.account}
+        transactionsHistory={props.transactionsHistory}
+      />
     </div>
   );
 };
